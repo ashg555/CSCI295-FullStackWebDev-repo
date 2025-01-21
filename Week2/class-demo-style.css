@@ -1,0 +1,28 @@
+body {
+    background-color: rgb(119, 136, 236);
+    font-family: 'Courier New', Courier, monospace
+}
+
+h2 {
+    border: 3px solid honeydew; 
+    margin-left: 10px;
+    padding: 10px
+}
+
+a {
+    background-color: rgba(215, 215, 215, 0.353);
+    border: 2px dotted gray
+}
+
+blockquote {
+    background-color: whitesmoke;
+}
+
+#purple-border-id {
+    border: 2px solid blueviolet
+}
+
+.big-text-class {
+    font-size: 200%;
+    color: yellow
+}
