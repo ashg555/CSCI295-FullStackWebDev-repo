@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    src: url(https://fonts.googleapis.com/css?family=Lato:300,400,900);
+}
+
+body {
+    font-family:"Lato", sans-serif;
+}
+
+article {
+    width: 550px;
+    border-radius: 15px;
+    margin: auto;
+    padding: 25px;
+    background-color: #fafafa;
+    box-shadow: 10px 11px 35px -14px rgba(0,0,0,0.54);
+}
+
+h1 {
+    margin-bottom: 0px;
+    padding: 10px;
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+img {
+    float: left;
+    height: 200px;
+    border-radius: 50%;
+    margin: 15px;
+    border: 5px dotted #8b603d;
+}
+
+p {
+    font-size: 14px;
+    text-align: justify;
+}

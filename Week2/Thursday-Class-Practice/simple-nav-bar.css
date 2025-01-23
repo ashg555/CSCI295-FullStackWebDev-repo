@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    src: url(https://fonts.googleapis.com/css?family=Lato:300,400,900);
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+ul {
+    padding: 0;
+    height: 40px;
+    line-height: 30px;
+    background-color: #84b3ad;
+    list-style-type: none;
+}
+
+li {
+    width: 100px;
+    margin: 0 5px;
+    padding: 5px 0;
+    cursor: pointer;
+    color: #ffffff;
+    text-align: center;
+    float: left;
+}
+
+li a {
+    display: block;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+li:hover {
+    background-color: #135e3e;
+    padding: 5px 0;
+    text-decoration: none;
+}
