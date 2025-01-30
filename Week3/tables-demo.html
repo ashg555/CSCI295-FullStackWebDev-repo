@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, td {
+            border: 3px solid slategrey;
+            border-style: dashed;
+            border-collapse: collapse;
+            padding:1%;
+        }
+        .main {
+            background-color: tomato;
+        }
+        .city {
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sample table</h1>
+    <table width="400px">
+        <tr>
+            <th>Company</th>
+            <th>Contact</th>
+            <th>Country</th>
+        </tr>
+        <tr>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+        </tr>
+        <tr>
+            <td>Centro comercial Moctezuma</td>
+            <td>Francisco Chang	</td>
+            <td>Mexico</td>
+        </tr>
+        <tr>
+            <td>Ernst Handel</td>
+            <td>Roland Mendel</td>
+            <td>Austria</td>
+        </tr>
+    </table>
+    <h1>Table sizes</h1>
+    <table width="800px">
+        <tr height="50px">
+            <th>Company</th>
+            <th>Contact</th>
+            <th>Country</th>
+        </tr>
+        <tr>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+        </tr>
+        <tr>
+            <td width="70%">Centro comercial Moctezuma</td>
+            <td>Francisco Chang	</td>
+            <td>Mexico</td>
+        </tr>
+        <tr style="height:200px">
+            <td>Ernst Handel</td>
+            <td>Roland Mendel</td>
+            <td>Austria</td>
+        </tr>
+    </table>
+    <h1>Table with row headings</h1>
+    <table width="250px">
+        <tr>
+            <th></th>
+            <th>Heading 1</th>
+            <th>Heading 2</th>
+        </tr>
+        <tr>
+            <th>Row 1</th>
+            <td>Data</td>
+            <td>Data</td>
+        </tr>
+        <tr>
+            <th>Row 2</th>
+            <td>Data</td>
+            <td>Data</td>
+        </tr>
+    </table>
+    <h1>Table colspan</h1>
+    <table height="150px", width="200px">
+        <tr>
+            <td colspan="3"></td>
+        </tr>
+        <tr>
+            <td colspan="3"></td>
+        </tr>
+        <tr height="70%">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <h1>More colspan and rowspan</h1>
+    <table style="height:200px; width: 400px;">
+        <tr>
+            <td colspan="3">2022</td>
+        </tr>
+        <tr>
+            <td>*</td>
+            <td>*</td>
+            <td>*</td>
+        </tr>
+        <tr>
+            <td rowspan="2", colspan="2">FIESTA</td>
+            <td>*</td>
+        </tr>
+        <tr>
+            <td>*</td>
+        </tr>
+        <tr>
+            <td>*</td>
+            <td>*</td>
+            <td>*</td>
+        </tr>
+    </table>
+    <h1>Testing class priorities</h1>
+    <p class="city">This paragraph has the city class.</p>
+    <p class="main">This paragraph has the main class.</p>
+    <p class="main city">This paragraph has both main and city classes.</p>
+    <p class="city main">This paragraph has both city and main classes.</p>
+    <p>The "city" class is lower down, so it takes priority over the "main" class.</p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</body>
+</html>

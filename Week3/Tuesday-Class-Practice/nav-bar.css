@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #CCCCCC;
+}
+
+ul {
+    background-color: #444;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+li {
+    font-size: 24px;
+    line-height: 40px;
+    height: 40px;
+    padding: 20px;
+    display: inline-block;
+}
+
+li:hover {
+    background-color: #888;
+}
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+i {
+    font-size: smaller;
+}
+
+p {
+    padding-left: 20px;
+}
