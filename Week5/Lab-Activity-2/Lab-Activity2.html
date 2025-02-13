@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript DOM</title>
+</head>
+
+<body>
+
+    <h1>Editing a paragraph tag</h1>
+    <p id='p1'>This is a paragraph.</p>
+    <button type="button" id="button1" onclick="changeText()">Click me to change text!</button>
+    <hr />
+
+    <script>
+        function changeText() {
+            document.getElementById("p1").textContent = "The time this text was last changed was " + Date();
+        }
+    </script>
+
+    <h1>Toggling an element</h1>
+
+    <button type="button" onclick="showHide()">Show/Hide Block</button>
+
+    <div id="block1" style="background-color: aquamarine;">
+        <h2 style="color: green;">Sample element</h2>
+        <p style="color: red;">Blah blah blah</p>
+    </div>
+    <hr />
+
+    <script>
+        function showHide() {
+            let div1Style = document.getElementById("block1").style;
+
+            if (div1Style.display == "none") {
+                div1Style.display = "block";
+            } else {
+                div1Style.display = "none";
+            }
+        }
+    </script>
+
+    <h1>Add Items to List</h1>
+    <p>Press Submit (or Enter on your keyboard) after typing into the box.</p>
+    <input type="text" id="input1" />
+    <button type="button" onclick="addItem()">Submit</button>
+    <button type="button" onclick="clearList()">Clear List</button>
+    <ul id="list1"></ul>
+    <hr />
+
+    <script>
+
+        document.getElementById("input1").addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                addItem();
+            }
+        });
+
+        function addItem() {
+            let list1 = document.getElementById("list1");
+            let input1 = document.getElementById("input1");
+
+            let newItem = document.createElement("li");
+            newItem.textContent = input1.value;
+            list1.appendChild(newItem);
+            input1.value = "";
+        }
+
+        function clearList() {
+            let list1 = document.getElementById("list1");
+            while (list1.firstChild) { // while the list has children
+                list1.removeChild(list1.lastChild); // remove child (<li>text</li>)
+            }
+        }
+
+    </script>
+
+    <div id="block2" style="background-color: lightgray;">
+        <h1>Changing Background Color</h1>
+        <p>This section's color changes to a random one, click or hover over! (Random Color Code found on <a
+                href="https://stackoverflow.com/a/5365036">Stack Overflow)</a></p>
+        <br />
+    </div>
+    <hr />
+
+    <script>
+        document.getElementById("block2").addEventListener("click", color)
+
+        document.getElementById("block2").addEventListener("mouseover", color)
+
+        function color() {
+            document.getElementById("block2").style.backgroundColor = "#" + ((1 << 24) * Math.random() | 0).toString(16).padStart(6, "0")
+        }
+    </script>
+
+    <h1>Image That Swaps When Clicked</h1>
+    <p>These are two images I had on my computer of when I caught a Great White Shark in Animal Crossing.</p>
+    <img src="image1.jpg" id="image" style="width: 400px;" onclick="changeImage()" />
+    <hr />
+
+    <script>
+        function changeImage() {
+            let image = document.getElementById("image");
+
+            if (image.src.includes("image1.jpg")) {
+                image.src = "image2.jpg";
+            } else {
+                image.src = "image1.jpg";
+            }
+        }
+    </script>
+
+    <h1>Validating a Form</h1>
+    <p>Enter anything, don't leave it empty.</p>
+    <form onsubmit="validate()">
+        <input type="text" id="input2"/>
+        <input type="submit"/>
+    </form>
+    <hr/>
+
+    <script>
+        function validate() {
+            let formText = document.getElementById("input2").value;
+            if (formText == "") {
+                alert("Must enter something.");
+                event.preventDefault()
+            }else {
+                alert("Form submitted!");
+            }
+        }
+    </script>
+
+    <h1>A simple Timer</h1>
+    <label for="seconds">Enter time length (seconds)</label>
+    <input type="range" id="seconds" min="1" max="60">
+    <button type="button" onclick="startTimer()">Start Countdown</button>
+    <p id="p2"></p>
+    <hr/>
+
+    <script>
+        let time = parseInt(document.getElementById("seconds").value);
+        let p = document.getElementById("p2");
+        function startTimer() {
+
+        }
+    </script>
+
+</body>
+
+</html>

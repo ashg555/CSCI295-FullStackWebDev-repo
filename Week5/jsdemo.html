@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p id="textHolder" ondblclick="dblClick()">blank</p>
+    <p class="csci295">Invisible text here</p>
+
+    <script>
+
+        let fontSize = 18
+
+        function sayHi(name) {
+            alert('Hello ' + name);
+        }
+
+        function press() {
+            let name = document.getElementById('username').value;
+            sayHi(name);
+            let p = document.getElementById('textHolder');
+            p.style = "font-size:20px; color:green;";
+        }
+
+        function dblClick() {
+            let p = document.getElementById('textHolder');
+            fontSize += 5;
+            p.style = "font-size:" + fontSize + "px";
+        }
+
+        if (true) {
+            let x = 20;
+            var y = 30;
+            document.writeln(x, y);
+        }
+
+        for (var i = 0; i < 10; i++) {
+            document.writeln(i);
+        }
+
+        document.writeln("<h1>Hello World</h1>");
+        document.writeln("<p class='csci295'>Welcome to Full-Stack Web Development! </p>");
+
+        document.getElementById('textHolder').innerHTML = "Double Click Me";
+
+        document.getElementsByClassName('csci295')[0].innerHTML = "This overwrote other text";
+
+        console.log('Terminal Output');
+        // alert('Hello');
+
+    </script>
+
+    <input type="text" id="username" />
+    <button id="buttonPress" onclick="press()">Enter</button>
+
+    <p id="carDisplay"> </p>
+
+    <script>
+
+        const car = {
+            name: 'Truck',
+            color: 'Blue',
+            year: 2000,
+            age: function() {
+                return 2025 - this.year;
+            }
+        }
+
+        car.brand = 'Chevy'; // adding a new value
+        delete car.name; // deleting a value
+
+        document.getElementById('carDisplay').innerHTML = 
+            car.color + car.name + car.year + car.brand + car.age();
+    </script>
+
+</body>
+
+</html>

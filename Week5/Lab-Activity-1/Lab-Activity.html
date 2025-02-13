@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript practice</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        td, th {
+            border: 1px solid black;
+            padding: 6px 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Calculate</h1>
+    <p id="1"></p>
+    <h1>Bigger Number</h1>
+    <p id="2"></p>
+    <h1>First 20 Numbers</h1>
+    <p id="3"></p>
+    <h2>Creating a table</h2>
+    <table id="table1"></table>
+    <h1>Printing Each Array Element</h1>
+    <p id="4"></p>
+
+    <script>
+
+        function calculation() {
+            return (30 + 25) + ((35 - 14) * 2);
+        }
+
+        document.getElementById('1').innerHTML = calculation();
+
+        let x1 = 10;
+        let x2 = 20;
+
+        // let x1 = 35;
+        // let x2 = 5;
+
+        // let x1 = 15;
+        // let x2 = 15;
+
+        if (x1 > x2) {
+            document.getElementById('2').innerHTML = 'First number, ' + x1 + ', was bigger.';
+        } else if (x2 > x1) {
+            document.getElementById('2').innerHTML = 'Second number, ' + x2 + ', was bigger.';
+        } else {
+            document.getElementById('2').innerHTML = 'Both numbers were ' + x1;
+        }
+
+        // let p = document.getElementById('3');
+        // p.innerHTML = ''
+        // for (i=1; i<21; i++){
+        //     p.append(i);
+        //     p.append(' ');
+        // }
+
+        // for (i=1; i<21; i++){
+        //     document.writeln(i);
+        //     document.writeln(' ');
+        //     if (i % 4 == 0) {
+        //         document.writeln("<br>")
+        //     }
+        // }
+
+        let table = document.getElementById("table1")
+
+        for (let i = 0; i < 5; i++) {
+            let row = document.createElement('tr');
+
+            for (let j = 1; j < 5; j++) {
+                let data = document.createElement("td");
+                data.textContent = j + (i*4)
+                row.appendChild(data);
+            }
+            table.appendChild(row);
+        }
+
+
+        // let myArray = [1, 2, 3, 4, 5];
+        // let myArray = ['aaa', 'ooo', 'uuu'];
+        let myArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+
+        function arrayElements(array) {
+            let finalString = ''
+            for (e in array) {
+                finalString += array[e];
+                finalString += ' ';
+            }
+            return finalString
+        }
+
+        document.getElementById('4').innerHTML = arrayElements(myArray);
+
+    </script>
+
+</body>
+</html>
