@@ -5,6 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Javascript DOM</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            background-color: #feeefe;
+        }
+
+        table, td {
+            border: 2px solid;
+            border-color: lightgray;
+        }
+
+        td {
+            padding: 7px;
+        }
+
+        p#calculator-display {
+            display: block;
+            border: 5px solid;
+            margin: 0;
+            border-color: lightgray;
+            text-align: right;
+            font-size: 25px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        p#calculator-saved {
+            display: block;
+            border: 2px solid;
+            margin: 0;
+            border-color: lightgray;
+            text-align: right;
+            font-size: 16px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        td > button {
+            font-size: 16px;
+            width: 35px;
+            height: 35px;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -115,10 +156,10 @@
     <h1>Validating a Form</h1>
     <p>Enter anything, don't leave it empty.</p>
     <form onsubmit="validate()">
-        <input type="text" id="input2"/>
-        <input type="submit"/>
+        <input type="text" id="input2" />
+        <input type="submit" />
     </form>
-    <hr/>
+    <hr />
 
     <script>
         function validate() {
@@ -126,7 +167,7 @@
             if (formText == "") {
                 alert("Must enter something.");
                 event.preventDefault()
-            }else {
+            } else {
                 alert("Form submitted!");
             }
         }
@@ -134,18 +175,274 @@
 
     <h1>A simple Timer</h1>
     <label for="seconds">Enter time length (seconds)</label>
-    <input type="range" id="seconds" min="1" max="60">
+    <input type="number" id="seconds" min="1" max="60">
     <button type="button" onclick="startTimer()">Start Countdown</button>
-    <p id="p2"></p>
-    <hr/>
+    <p id="p2"> </p>
+    <hr />
 
     <script>
-        let time = parseInt(document.getElementById("seconds").value);
         let p = document.getElementById("p2");
+        let box = document.getElementById("seconds");
         function startTimer() {
+            let time = parseInt(box.value);
+            box.value = "";
 
+            function timerTick() {
+                p.innerHTML = time;
+                if (time <= 0) {
+                    clearInterval(timer);
+                    p.innerHTML = "Finished!";
+                }
+                time--;
+            }
+            let timer = setInterval(timerTick, 1000);
         }
     </script>
+
+    <h1>Calculator</h1>
+    <table id="calculator">
+        <tr>
+            <td colspan="4">
+                <p id="calculator-saved">&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <p id="calculator-display">0</p>
+            </td>
+        </tr>
+        <tr>
+            <td id="clear"><button type="button" onclick="calcClear()">AC</button></td>
+            <td id="negative"><button type="button" onclick="calcNegative()">&#177;</button></td>
+            <td id="percent"><button type="button" onclick="calcPercent()">&#37;</button></td>
+            <td id="divide"><button type="button" onclick="calcDivide()">&#247;</button></td>
+        </tr>
+        <tr>
+            <td id="7"><button type="button" onclick="calc7()">7</button></td>
+            <td id="8"><button type="button" onclick="calc8()">8</button></td>
+            <td id="9"><button type="button" onclick="calc9()">9</button></td>
+            <td id="multiply"><button type="button" onclick="calcMult()">&#215;</button></td>
+        </tr>
+        <tr>
+            <td id="4"><button type="button" onclick="calc4()">4</button></td>
+            <td id="5"><button type="button" onclick="calc5()">5</button></td>
+            <td id="6"><button type="button" onclick="calc6()">6</button></td>
+            <td id="minus"><button type="button" onclick="calcMinus()">&#8722;</button></td>
+        </tr>
+        <tr>
+            <td id="1"><button type="button" onclick="calc1()">1</button></td>
+            <td id="2"><button type="button" onclick="calc2()">2</button></td>
+            <td id="3"><button type="button" onclick="calc3()">3</button></td>
+            <td id="plus"><button type="button" onclick="calcPlus()">&#43;</button></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td id="0"><button type="button" onclick="calc0()">0</button></td>
+            <td id="dot"><button type="button" onclick="calcDot()">.</button></td>
+            <td id="equals"><button type="button" onclick="calcEquals()">&#61;</button></td>
+        </tr>
+    </table>
+
+    <script>
+        let calcDisplayP = document.getElementById("calculator-display");
+        let workingText;
+        let savedNums = [];
+
+        function calcClear() {
+            calcDisplayP.innerHTML = 0;
+            document.getElementById("calculator-saved").innerHTML = "&nbsp;";
+        }
+
+        function cleanDisplayText(text) {
+            if (text.length == 2 && text[0] == "-") {
+                // account for the case of 0 (starting string) becoming -0
+                return text
+            } 
+            if (text.length == 2 && text[0] == "0" && text[1] !== ".") {
+                // for numbers like 01, 00 at the beginning of the input
+                return text[1]; 
+            }
+            if (text.startsWith("0") && text[1] !== ".") {
+                // Prevent numbers like "0034"
+                return text.replace(/^0+/, "");
+            } else if (text.startsWith("-0") && text[2] !== ".") {
+                // Prevent numbers like "-0034", allowing "-0.5"
+                return "-" + text.slice(2).replace(/^0+/, "");
+            }
+            
+            return text;
+        }
+
+        function calcNegative() {
+            workingText = calcDisplayP.innerHTML;
+            if (workingText.startsWith("-")) {
+                workingText = workingText.slice(1); // strings are immutable
+                calcDisplayP.innerHTML = cleanDisplayText(workingText);
+            } else {
+                workingText = "-" + workingText;
+                calcDisplayP.innerHTML = cleanDisplayText(workingText);
+            }
+        }
+
+        function calcPercent() {
+            workingText = calcDisplayP.innerHTML;
+
+            let dotIndex;
+            if (workingText.includes(".")) {
+                dotIndex = workingText.indexOf("."); // find decimal place
+                workingText = workingText.slice(0, dotIndex) + workingText.slice(dotIndex + 1); // Remove decimal
+                dotIndex -= 2; // Move two places left
+            } else {
+                dotIndex = workingText.length - 2;
+            }
+
+            if (dotIndex <= 0) {
+                // If moving left past the start, prepend "0.0..."
+                workingText = "0." + "0".repeat(Math.abs(dotIndex)) + workingText;
+            } else {
+                // Insert decimal at new index
+                workingText = workingText.slice(0, dotIndex) + "." + workingText.slice(dotIndex);
+            }
+
+            calcDisplayP.innerHTML = cleanDisplayText(workingText);
+        }
+
+        function calcDot() {
+            workingText = calcDisplayP.innerHTML;
+            if (workingText.includes(".")) {
+                // don't do anything
+                return
+            } else {
+                workingText += '.';
+            }
+            calcDisplayP.innerHTML = cleanDisplayText(workingText);
+        }
+
+        function calc0() {
+            workingText = calcDisplayP.innerHTML;
+            workingText += '0';
+            calcDisplayP.innerHTML = cleanDisplayText(workingText);
+        }
+
+        function calc1() {
+            workingText = calcDisplayP.innerHTML;
+            workingText += '1';
+            calcDisplayP.innerHTML = cleanDisplayText(workingText);
+        }
+
+        function calc2() {
+            workingText = calcDisplayP.innerHTML;
+            workingText += '2';
+            calcDisplayP.innerHTML = cleanDisplayText(workingText);
+        }
+
+        function calc3() {
+            workingText = calcDisplayP.innerHTML;
+            workingText += '3';
+            calcDisplayP.innerHTML = cleanDisplayText(workingText);
+        }
+
+        function calc4() {
+            workingText = calcDisplayP.innerHTML;
+            workingText += '4';
+            calcDisplayP.innerHTML = cleanDisplayText(workingText);
+        }
+
+        function calc5() {
+            workingText = calcDisplayP.innerHTML;
+            workingText += '5';
+            calcDisplayP.innerHTML = cleanDisplayText(workingText);
+        }
+
+        function calc6() {
+            workingText = calcDisplayP.innerHTML;
+            workingText += '6';
+            calcDisplayP.innerHTML = cleanDisplayText(workingText);
+        }
+        function calc7() {
+            workingText = calcDisplayP.innerHTML;
+            workingText += '7';
+            calcDisplayP.innerHTML = cleanDisplayText(workingText);
+        }
+        function calc8() {
+            workingText = calcDisplayP.innerHTML;
+            workingText += '8';
+            calcDisplayP.innerHTML = cleanDisplayText(workingText);
+        }
+        function calc9() {
+            workingText = calcDisplayP.innerHTML;
+            workingText += '9';
+            calcDisplayP.innerHTML = cleanDisplayText(workingText);
+        }
+
+        function calcPlus() {
+            workingText = calcDisplayP.innerHTML;
+            savedNums.push(workingText);
+            savedNums.push("+");
+            let strSaved = String(savedNums);
+            strSaved = strSaved.replace(/,/g, "");
+            document.getElementById("calculator-saved").innerHTML = strSaved;
+            calcDisplayP.innerHTML = 0;
+        }
+
+        
+        function calcMinus() {
+            workingText = calcDisplayP.innerHTML;
+            savedNums.push(workingText);
+            savedNums.push("-");
+            let strSaved = String(savedNums);
+            strSaved = strSaved.replace(/,/g, "");
+            document.getElementById("calculator-saved").innerHTML = strSaved;
+            calcDisplayP.innerHTML = 0;
+        }
+
+        function calcDivide() {
+            workingText = calcDisplayP.innerHTML;
+            savedNums.push(workingText);
+            savedNums.push("/");
+            let strSaved = String(savedNums);
+            strSaved = strSaved.replace(/,/g, "");
+            document.getElementById("calculator-saved").innerHTML = strSaved;
+            calcDisplayP.innerHTML = 0;
+        }
+
+        function calcMult() {
+            workingText = calcDisplayP.innerHTML;
+            savedNums.push(workingText);
+            savedNums.push("*");
+            let strSaved = String(savedNums);
+            strSaved = strSaved.replace(/,/g, "");
+            document.getElementById("calculator-saved").innerHTML = strSaved;
+            calcDisplayP.innerHTML = 0;
+        }
+
+        function calcEquals() {
+            workingText = calcDisplayP.innerHTML;
+            savedNums.push(workingText);
+            let strSaved = String(savedNums);
+            strSaved = strSaved.replace(/,/g, "");
+            document.getElementById("calculator-saved").innerHTML = strSaved + "=";
+            savedNums = [];
+            
+            // DON'T USE EVAL IT'S A REALLY BAD SECURITY FLAW
+            let ans = eval(strSaved)
+            calcDisplayP.innerHTML = ans;
+        }
+
+    </script>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
 </body>
 
