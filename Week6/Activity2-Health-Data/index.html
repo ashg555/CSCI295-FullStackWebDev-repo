@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid Charts</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <h1>Enter a Country</h1>
+    <input type="text" id="countryInput">
+    <button type="button" onclick="search()">Search</button>
+
+    <h1 id="country">Currently Viewing: USA</h1>
+    <img id="flag">
+    <div style="width:300px">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+
+        let myChartInstance;
+
+        getData('https://disease.sh/v3/covid-19/countries/usa');
+
+        function search() {
+            let text = document.getElementById("countryInput").value;
+            text = "https://disease.sh/v3/covid-19/countries/" + text.toLowerCase();
+            myChartInstance.destroy();
+            getData(text);
+
+            // getData("https://disease.sh/v3/covid-19/historical/usa")
+        }
+
+        function getData(url) {
+            let getDataPromise = new Promise(async function (myResolve, myReject) {
+
+                try {
+                    const response = await fetch(url);
+                    console.log(response)
+
+                    if (!response.ok) {
+                        myReject(response.status);
+                        return;
+                    }
+
+                    const json = await response.json();
+                    console.log(json);
+                    myResolve(json);
+
+                } catch (error) {
+                    myReject(error);
+                }
+            });
+
+            let countryHeading = document.getElementById("country");
+
+            getDataPromise.then(
+                function (value) {
+                    console.log(value);
+                    let img1 = document.getElementById("flag");
+                    img1.src = value.countryInfo.flag;
+                    countryHeading.innerHTML = "Currently Viewing: " + value.country;
+
+                    const data = {
+                        labels: [
+                            'Cases',
+                            'Deaths',
+                            'Recovered'
+                        ],
+                        datasets: [{
+                            label: 'Covid',
+                            data: [value.cases, value.deaths, value.recovered],
+                            backgroundColor: [
+                                'rgb(255, 99, 132)',
+                                'rgb(54, 162, 235)',
+                                'rgb(255, 205, 86)'
+                            ],
+                            hoverOffset: 4
+                        }]
+                    };
+
+                    const config = {
+                        type: 'doughnut',
+                        data: data,
+                    };
+
+                    const ctx = document.getElementById("myChart");
+
+                    myChartInstance = new Chart(ctx, config);
+
+                },
+                function (error) {
+                    console.log(error)
+                    countryHeading.innerHTML = "Currently Viewing: Error, no country found"
+                }
+            );
+        };
+
+
+    </script>
+</body>
+
+</html>
