@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superhero Viewer - Homepage</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.plot.ly/plotly-3.0.0.min.js" charset="utf-8"></script>
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <header>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="./health.html">Health Page</a></li>
+            <li>
+                <input type="text" id="superhero-search" list="superhero-names" placeholder="Type a Superhero...">
+                <datalist id="superhero-names"></datalist>
+                <button type="button" id="search-button">Go</button>
+            </li>
+            <li><button type="button" id="random-hero">Random</button></li>
+        </ul>
+    </header>
+    <main>
+        <div class="main-text">
+            <h1>Name: <span id="name"></span></h1>
+            <h2>Biography</h2>
+            <ul>
+                <li>Full Name: <span id="fullname"></span></li>
+                <li>Alter Egos: <span id="alterEgos"></span></li>
+                <li>Aliases: <span id="aliases"></span></li>
+                <li>Place of Birth: <span id="birthplace"></span></li>
+                <li>First Appearance: <span id="firstApp"></span></li>
+                <li>Alignment: <span id="alignment"></span></li>
+            </ul>
+            <h2>Occupation</h2>
+            <ul>
+                <li>Occupation: <span id="occupation"></span></li>
+                <li>Base of operation: <span id="base"></span></li>
+            </ul>
+            <h2>Connections</h2>
+            <ul>
+                <li>Group Affiliation: <span id="group-affiliation"></span></li>
+                <li>Relatives: <span id="relatives"></span></li>
+            </ul>
+        </div>
+        <div class="side-bar">
+            <img id="image" src="placeholder.jpg">
+            <h2>Stats</h1>
+                <ul>
+                    <li>Intelligence: <span id="int" class="blue"></span></li>
+                    <li>Strength: <span id="str" class="blue"></span></li>
+                    <li>Speed: <span id="spd" class="blue"></span></li>
+                    <li>Durability: <span id="dur" class="blue"></span></li>
+                    <li>Power: <span id="pow" class="blue"></span></li>
+                    <li>Combat: <span id="com" class="blue"></span></li>
+                </ul>
+                <h2>Appearance</h2>
+                <ul>
+                    <li>Gender: <span id="gender" class="blue"></span></li>
+                    <li>Race: <span id="race" class="blue"></span></li>
+                    <li>Height: <span id="height" class="blue"></span></li>
+                    <li>Weight: <span id="weight" class="blue"></span></li>
+                    <li>Eye Color: <span id="eyeColor" class="blue"></span></li>
+                    <li>Hair Color: <span id="hairColor" class="blue"></span></li>
+                </ul>
+        </div>
+    </main>
+</body>
+
+</html>

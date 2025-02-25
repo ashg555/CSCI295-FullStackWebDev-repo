@@ -73,7 +73,17 @@ h1 {
 
 
 .side-bar > img {
+    display: block;
+    margin: auto;
     width: 100%;
-    max-width: 250px;
-    height: auto;
+    max-height: 250px;
+    width: auto;
+}
+
+span {
+    color: #ffaaaa;
+}
+
+span.blue {
+    color: #5154a8
 }
