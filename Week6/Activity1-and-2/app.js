@@ -2989,7 +2989,8 @@ function getHero(id) {
 
         },
         function (error) {
-            console.log(error)
+            alert(error);
+            console.log(error);
         }
     );
 }
@@ -3019,6 +3020,7 @@ document.addEventListener('DOMContentLoaded', () => {
             getHero(selectedId); // Call the search function with the ID
         } else {
             console.error('No matching superhero found!');
+            alert('Error: No superhero found.');
         }
     });
 
