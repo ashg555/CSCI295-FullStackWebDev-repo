@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+
+  <!-- The navigation bar stays at the top of the page so you can easily navigate it. -->
+  <nav>
+    <ul>
+      <li><a href="#Top">Home</a></li>
+      <li><a href="#About">About Me</a></li>
+      <li><a href="#Projects">Projects</a></li>
+      <li><a href="#Contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- This is the header section. -->
+  <header id="Top">
+    <h1>Ashleigh (Ash) Gossman</h1>
+    <img src="me.jpg" alt="A picture of me">
+    <h2>Bio</h2>
+    <p>
+      I am a junior Computer Science student at Houghton University. 
+      I'm passionate about computers, designing, and artificial intelligence.
+    </p>
+    <h3>Fun fact</h3>
+    <p>I am the oldest of 8, and have 7 younger siblings.</p>
+  </header>
+  <section id="About">
+    <h2>About Me</h2>
+    <h3>Skills</h3>
+    <ul>
+      <li>Python</li>
+      <li>JavaScript</li>
+      <li>Java</li>
+      <li>CSS</li>
+      <li>HTML</li>
+    </ul>
+    <h2>Experiences</h2>
+    <h3>Some courses I've taken</h3>
+    <ul>
+      <li>Programming I</li>
+      <li>Calculus I</li>
+      <li>Computer Architecture</li>
+      <li>Programming II</li>
+      <li>Data Structures and Algorithms</li>
+      <li>Statistics</li>
+      <li>Machine Learning</li>
+      <li>Data Science I (in progress)</li>
+      <li>Intro to Cybersecurity (in progress)</li>
+      <li>Full-Stack Web Development (in progress)</li>
+    </ul>
+    <h3>Project I've done</h3>
+    <p>I completed a semester-long research project examining the use of ChatGPT and opinions about it at Houghton.</p>
+    <h2>Goals</h2>
+    <p>To learn lots of things and eventually get a computer science related job.</p>
+  </section>
+
+
+  <!-- Three projects as cards, with images. -->
+
+  <section id="Projects">
+    <h2>Projects</h2>
+
+    <div id="card-container"> <!-- for flexbox -->
+      <div class="card" onclick="openFullscreen('img1')">
+        <img class="card-img-top" id="img1" src="screenshot1.png" alt="Card image">
+        <div class="card-body">
+          <h4 class="card-title">Superhero Website</h4>
+          <p class="card-text">This website uses the Superhero API (when CORS is enabled) to display information about a superhero.</p>
+          <a href="https://ashg555.github.io" class="btn btn-primary" target="_blank">View on github.io</a>
+        </div>
+      </div>
+  
+      <div class="card" onclick="openFullscreen('img2')">
+        <img class="card-img-top" id="img2" src="screenshot2.png" alt="Card image">
+        <div class="card-body">
+          <h4 class="card-title">Covid Health Data API Website</h4>
+          <p class="card-text">This website displays the flag and some graphs based on what the user types.</p>
+          <a href="https://ashg555.github.io/health.html" class="btn btn-primary" target="_blank">View on github.io</a>
+        </div>
+      </div>
+  
+      <div class="card" onclick="openFullscreen('img3')">
+        <img class="card-img-top" id="img3" src="screenshot3.png" alt="Card image">
+        <div class="card-body">
+          <h4 class="card-title">A Javascript Calculator</h4>
+          <p class="card-text">A fully functional calculator built from scratch with javascript.</p>
+          <a href="https://github.com/ashg555/CSCI295-FullStackWebDev-repo/blob/main/Week5/Lab-Activity-2/Lab-Activity2.html" class="btn btn-primary" target="_blank">View/download Code</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fullscreen overlay for looking at cards -->
+    <div id="fullscreenOverlay" class="fullscreen-overlay" onclick="closeFullscreen()">
+      <img id="fullscreenImage" src="" alt="Fullscreen Image" class="fullscreen-image">
+    </div>
+
+  </section>
+
+  <!-- The Contact section -->
+  <section id="Contact">
+    <h2>Contact Me</h2>
+    <div class="container">
+      <!-- POST method doesn't put the response in the url, but would send them to the server. -->
+      <form name="contactForm" onsubmit="return validateForm()" method="post">
+
+        <div id="text">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" autocomplete="name" placeholder="Your name..">
+  
+          <label for="email">Name</label>
+          <input type="text" id="email" name="email" autocomplete="email" placeholder="Your email..">
+  
+          <label for="subject">Message</label>
+          <textarea id="subject" name="subject" placeholder="Write a message.."></textarea>
+        </div>
+        
+        <div id="submitdiv">
+          <input type="submit" value="Submit">
+        </div>
+      </form>
+    </div>
+  </section>
+  <!-- The footer, a simple area with three links. -->
+  <footer>
+    <ul>
+      <li>Email: <a href="mailto:ashleigh.gossman26@houghton.edu" target="_blank">ashleigh.gossman26@houghton.edu</a></li>
+      <li>Github: <a href="https://github.com/ashg555" target="_blank">ashg555</a></li>
+      <li>Linkedin: <a href="https://www.linkedin.com/in/ashleigh-gossman-219415309/">Ashleigh Gossman</a></li>
+    </ul>
+  </footer>
+</body>
+</html>
