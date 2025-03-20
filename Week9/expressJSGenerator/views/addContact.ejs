@@ -1,0 +1,23 @@
+<%- include('layout'); %>
+<body>
+
+  <%- include('navbar', page='add'); %>
+
+  <h1><%= title %></h1>
+  <h2>The current time is: <%=currentDate%></h2>
+
+  <form method="POST" action="/add">
+
+    <input type="text" name="firstName" placeholder="First Name"/>
+    <input type="text" name="lastName" placeholder="Last Name"/>
+    <input type="email" name="email" placeholder="Email"/>
+    <input type="tel" name="phone" placeholder="Phone"/>
+
+    <input type="submit" />
+
+  </form>
+  
+  <a href="/mycontacts">View all Contacts</a>
+
+</body>
+</html>
