@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keep Notes App</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>My Notes</h1>
+    
+    <div class="note-editor">
+      <textarea id="noteInput" placeholder="Enter a Note..."></textarea>
+      <button onclick="saveNote()" class="save-btn">Save Note</button>
+      <button onclick="loadNotes()" class="save-btn">Load Notes</button>
+    </div>
+
+    <!-- Notes Display Section -->
+    <div id="notesContainer" class="notes-grid"></div>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
