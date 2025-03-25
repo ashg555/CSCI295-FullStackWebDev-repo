@@ -15,12 +15,17 @@ app.use(express.static(path.join(__dirname, 'public'), {
   }
 }));
 
+
 // Route to render EJS template
 app.get('/', (req, res) => {
   res.render('index');
 });
 
+
+
+
 app.listen(2000, () => {
-  console.log('Server running on http://localhost:2000');
+  console.log('Server running on port 2000');
 });
 
+// app.listen(2000, "10.53.2.235");

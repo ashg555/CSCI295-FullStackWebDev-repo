@@ -1,0 +1,25 @@
+<%- include('layout', {title: title}); %>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <form method="post" action="/add">
+
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" required>
+
+      <label for="body">Note:</label>
+      <textarea id="body" name="body" required></textarea>
+      
+      <label for="starred">Star This Note:</label>
+      <input type="checkbox" id="starred" name="starred"></textarea>
+
+      <label for="color">Color:</label>
+      <input type="color" id="color" name="color"></textarea>
+
+      <button type="submit">Add Note</button>
+    </form>
+
+    <p>Your notes: <%= notes %></p>
+
+  </body>
+</html>
