@@ -63,7 +63,7 @@ nav > ul > li > a#selected {
   color: #c300ff;
 }
 
-#addForm, #editForm {
+#addForm {
   padding: 20px;
   margin: 10px;
   background-color: #f0f0f0;
@@ -71,32 +71,32 @@ nav > ul > li > a#selected {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-#addForm > label, #editForm > label {
+#addForm > label {
   display: block;
   margin-top: 10px;
 }
 
-#addForm > input#title, #editForm > input#title {
+#addForm > input#title {
   width: 40%;
 }
 
-#addForm > textarea#body, #editForm > textarea#body {
+#addForm > textarea#body {
   width: 40%;
   height: 100px;
   resize: none;
 }
 
-#addForm > input#starred, #editForm > input#starred {
+#addForm > input#starred {
   width: 17px;
   height: 17px;
   accent-color: #00B7FF;
 }
 
-#addForm > input#color, #editForm > input#color {
+#addForm > input#color {
   width: 10%;
 }
 
-#addForm > button, #editForm > button {
+#addForm > button {
   display: block;
   margin-top: 10px;
   background-color: #fcfcfc;
