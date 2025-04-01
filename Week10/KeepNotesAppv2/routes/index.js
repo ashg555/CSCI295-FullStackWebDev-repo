@@ -84,7 +84,7 @@ router.get('/edit/:id', function(req, res, next) {
   myNote = jsonData.filter(note => note.id == id);
   console.log(myNote);
 
-  res.redirect('edit', { title: 'Edit a Note', note: myNote });
+  res.render('edit', { title: 'Edit a Note', note: myNote });
 });
 
 
