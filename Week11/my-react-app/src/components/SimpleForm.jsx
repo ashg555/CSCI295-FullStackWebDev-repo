@@ -44,14 +44,13 @@ function SimpleForm() {
     <br />
 
     <label>Gender</label>
-    <select onChange={(e) => setGender(e.target.value)}>
+    {/* <select onChange={(e) => setGender(e.target.value)}>
       <option value=''></option>
       <option value='M'>M</option>
       <option value='F'>F</option>
-    </select>
+    </select> */}
+    <input type='' onChange={(e) => setGender(e.target.value)} value={gender}></input>
     {gender}
-    {/* <input type='' onChange={(e) => setGender(e.target.value)} value={gender}></input> */}
-    {/* {gender} */}
     <br />
 
     <button>Submit</button>

@@ -15,6 +15,7 @@ function AddForm() {
   
 
   return <form>
+    <h2>Add some numbers</h2>
     <div>
       <label>First Number: </label>
       <input type="number" onChange={(e) => setNum1(e.target.value)} value={num1}></input>
