@@ -1,5 +1,7 @@
 import { useState } from "react";
 import ListItemDisplay from "./ListItemDisplay";
+import Demo from "./Demo";
+import Button from "./Button";
 
 export default function Hobbies() {
   const [hobbies, setHobbies] = useState([]);
@@ -47,6 +49,11 @@ export default function Hobbies() {
           ))}
         </ul>
       )}
+
+      <Demo>
+        <Button/>
+      </Demo>
+
     </>
   );
 }

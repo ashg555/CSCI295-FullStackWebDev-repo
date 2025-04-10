@@ -8,7 +8,11 @@ import SimpleForm from "./components/SimpleForm";
 import Hobbies from "./components/Hobbies";
 import HomePage from "./pages/Homepage";
 import AboutPage from "./pages/AboutPage";
+import ProfilePage from "./pages/ProfilePage";
+import NoPage from "./pages/NoPage";
 import { BrowserRouter, Route, Routes } from "react-router";
+import UserPage from "./pages/UserPage";
+import ApiPage from "./pages/ApiPage";
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -36,6 +40,14 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/profile/:id" element={<ProfilePage />} />
+          <Route path="/profile/:id/:age" element={<ProfilePage />} />
+          <Route path="*" element={<NoPage />} />
+          <Route path="/user" element={<UserPage />}>
+            <Route path="/user/about" element={<AboutPage/>}/>
+          </Route>
+          <Route path="/api" element={<ApiPage />} />
         </Routes>
       </BrowserRouter>
 
