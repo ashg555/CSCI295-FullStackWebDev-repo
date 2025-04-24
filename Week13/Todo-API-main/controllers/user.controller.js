@@ -5,6 +5,8 @@ const User = require("../models/user.model");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
+const jwt = require("jsonwebtoken");
+
 //create route handler
 exports.createUser = async (req, res) => {
   try {
@@ -64,9 +66,13 @@ exports.findAndLogin = async (req, res) => {
 
     // then compare password hash (returns true if match)
     if (bcrypt.compareSync(password, getUser.password)) {
+      console.log(getUser._id.toString());
+      const token = jwt.sign(getUser._id.toString(), process.env.JWT_SECRET);
+
       return res.status(200).json({
         successs: true,
-        response: { email, password },
+        token: token,
+        response: getUser,
         message: "login successful",
       });
     } else {
@@ -78,7 +84,34 @@ exports.findAndLogin = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       success: false,
-      data: "not implemented yet",
+      data: "Uncaught error in login",
+      message: error.message,
+    });
+  }
+};
+
+exports.verify = async (req, res) => {
+  try {
+    const authHeader = req.headers["authorization"];
+    const token = authHeader && authHeader.split(" ")[1];
+    if (!token) return res.sendStatus(401);
+
+    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+      //verification not working rn
+      if (err) return res.sendStatus(403);
+      req.user = user;
+
+      return res.status(200).json({
+        successs: true,
+        token: token,
+        response: {},
+        message: "Successfully verified",
+      });
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      data: "Uncaught error in verification",
       message: error.message,
     });
   }

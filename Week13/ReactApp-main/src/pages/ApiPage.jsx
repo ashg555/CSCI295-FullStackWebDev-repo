@@ -79,7 +79,7 @@ export default function ApiPage() {
 
       <button onClick={gradeQuiz}> Grade </button>
       
-      {finalScore == "" ? "" : <h1>You scored {finalScore}</h1>}
+      {finalScore == "" ? "" : <h1>You scored {finalScore} out of {questions.length}.</h1>}
       <hr />
       <Link to="/"> Go to Homepage</Link>
     </>

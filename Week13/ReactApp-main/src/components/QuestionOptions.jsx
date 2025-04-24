@@ -14,7 +14,13 @@ export default function QuestionOptions({questionNumber, options, setAnswers, us
         setAnswers({...userAnswers, [key]:e.target.value});
         console.log(userAnswers) 
       };
-    
+
+    // Function to decode HTML entities
+    const decodeHtml = (html) => {
+        const txt = document.createElement("textarea");
+        txt.innerHTML = html;
+        return txt.value;
+    };
     
    
     return <>
@@ -25,7 +31,7 @@ export default function QuestionOptions({questionNumber, options, setAnswers, us
             <option value=""> </option>
         {options.map((option) => (
             <option key={option} value={option}>
-            {option}
+            {decodeHtml(option)}
             </option>
         ))}
         </select>
